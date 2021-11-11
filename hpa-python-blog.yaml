@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-aso001
+  name: example
   namespace: aso001
 spec:
   scaleTargetRef:
@@ -9,11 +9,11 @@ spec:
     kind: Deployment
     name: blog-django-py-git
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 3
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
-          averageUtilization: 20
+          averageUtilization: 50
           type: Utilization
